@@ -15,7 +15,7 @@ public class DelegateTest {
 
         //委派模式：就是静态代理和策略模式一种特殊的组合
 
-        new Boss().command("登录",new Leader());
+        new Boss().command("登录", new Leader());
 
     }
 

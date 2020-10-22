@@ -3,7 +3,7 @@ package com.gupaoedu.vip.pattern.decorator.battercake.v1;
 /**
  * Created by Tom on 2019/3/17.
  */
-public class BattercakeWithEggAndSausage extends BattercakeWithEgg{
+public class BattercakeWithEggAndSausage extends BattercakeWithEgg {
     @Override
     protected String getMsg() {
         return super.getMsg() + "+1根香肠";

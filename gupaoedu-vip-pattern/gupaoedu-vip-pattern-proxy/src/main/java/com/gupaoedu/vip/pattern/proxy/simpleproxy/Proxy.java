@@ -7,7 +7,7 @@ public class Proxy implements Subject {
 
     private Subject subject;
 
-    public Proxy(Subject subject){
+    public Proxy(Subject subject) {
         this.subject = subject;
     }
 
@@ -18,11 +18,11 @@ public class Proxy implements Subject {
         after();
     }
 
-    public void before(){
+    public void before() {
         System.out.println("called before request().");
     }
 
-    public void after(){
+    public void after() {
         System.out.println("called after request().");
     }
 }

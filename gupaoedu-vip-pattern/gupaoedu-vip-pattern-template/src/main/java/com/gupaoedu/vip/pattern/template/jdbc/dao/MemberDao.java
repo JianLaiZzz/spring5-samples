@@ -16,7 +16,7 @@ public class MemberDao extends JdbcTemplate {
         super(dataSource);
     }
 
-    public List<?> selectAll(){
+    public List<?> selectAll() {
         String sql = "select * from t_member";
         return super.executeQuery(sql, new RowMapper<Member>() {
             public Member mapRow(ResultSet rs, int rowNum) throws Exception {
@@ -28,6 +28,6 @@ public class MemberDao extends JdbcTemplate {
                 member.setAddr(rs.getString("addr"));
                 return member;
             }
-        },null);
+        }, null);
     }
 }

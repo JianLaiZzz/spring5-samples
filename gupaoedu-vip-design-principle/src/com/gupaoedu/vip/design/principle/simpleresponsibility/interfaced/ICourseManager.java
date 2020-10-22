@@ -5,5 +5,6 @@ package com.gupaoedu.vip.design.principle.simpleresponsibility.interfaced;
  */
 public interface ICourseManager {
     void studyCourse();
+
     void refundCourse();
 }

@@ -7,5 +7,6 @@ import com.gupaoedu.vip.pattern.adapter.loginadapter.ResultMsg;
  */
 public interface RegistAdapter {
     boolean support(Object adapter);
+
     ResultMsg login(String id, Object adapter);
 }

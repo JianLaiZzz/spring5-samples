@@ -2,10 +2,6 @@ package com.gupaoedu.vip.pattern.singleton.test;
 
 import com.gupaoedu.vip.pattern.singleton.register.EnumSingleton;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.lang.reflect.Constructor;
 
 /**
@@ -43,11 +39,11 @@ public class EnumSingletonTest {
     public static void main(String[] args) {
         try {
             Class clazz = EnumSingleton.class;
-            Constructor c = clazz.getDeclaredConstructor(String.class,int.class);
+            Constructor c = clazz.getDeclaredConstructor(String.class, int.class);
             c.setAccessible(true);
-            EnumSingleton enumSingleton = (EnumSingleton)c.newInstance("Tom",666);
+            EnumSingleton enumSingleton = (EnumSingleton) c.newInstance("Tom", 666);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

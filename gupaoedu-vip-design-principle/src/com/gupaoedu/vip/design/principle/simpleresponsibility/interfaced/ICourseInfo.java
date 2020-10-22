@@ -5,5 +5,6 @@ package com.gupaoedu.vip.design.principle.simpleresponsibility.interfaced;
  */
 public interface ICourseInfo {
     String getCourseName();
+
     byte[] getCourseVideo();
 }

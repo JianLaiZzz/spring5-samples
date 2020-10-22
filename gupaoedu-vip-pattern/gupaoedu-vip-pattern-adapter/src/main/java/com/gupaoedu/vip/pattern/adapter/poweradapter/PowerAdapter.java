@@ -5,7 +5,7 @@ package com.gupaoedu.vip.pattern.adapter.poweradapter;
  */
 public class PowerAdapter implements DC5 {
 
-   private AC220 ac220;
+    private AC220 ac220;
 
     public PowerAdapter(AC220 ac220) {
         this.ac220 = ac220;

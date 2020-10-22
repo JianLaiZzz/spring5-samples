@@ -3,7 +3,7 @@ package com.gupaoedu.vip.design.principle.openclose;
 /**
  * Created by Tom
  */
-public class JavaCourse implements ICourse{
+public class JavaCourse implements ICourse {
     private Integer Id;
     private String name;
     private Double price;

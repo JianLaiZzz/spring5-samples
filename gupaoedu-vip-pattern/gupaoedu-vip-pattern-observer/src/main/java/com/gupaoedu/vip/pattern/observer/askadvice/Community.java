@@ -5,7 +5,7 @@ import java.util.Observable;
 /**
  * Created by Tom
  */
-public class Community extends Observable{
+public class Community extends Observable {
     private String name;
 
     public Community(String name) {
@@ -16,8 +16,8 @@ public class Community extends Observable{
         return name;
     }
 
-    public void publishQuestion(Community community, Question question){
-        System.out.println(question.getUserName()+"在“" + community.name + "”上提交了一个问题。");
+    public void publishQuestion(Community community, Question question) {
+        System.out.println(question.getUserName() + "在“" + community.name + "”上提交了一个问题。");
         setChanged();
         notifyObservers(question);
     }

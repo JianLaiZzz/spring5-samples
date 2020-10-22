@@ -1,7 +1,7 @@
 package com.gupaoedu.vip.spring.formework.webmvc.servlet;
 
-import java.util.Locale;
 import java.io.File;
+import java.util.Locale;
 
 /**
  * Created by Tom on 2019/4/13.
@@ -18,10 +18,12 @@ public class GPViewResolver {
         templateRootDir = new File(templateRootPath);
     }
 
-    public GPView resolveViewName(String viewName, Locale locale) throws Exception{
-        if(null == viewName || "".equals(viewName.trim())){return null;}
+    public GPView resolveViewName(String viewName, Locale locale) throws Exception {
+        if (null == viewName || "".equals(viewName.trim())) {
+            return null;
+        }
         viewName = viewName.endsWith(DEFAULT_TEMPLATE_SUFFX) ? viewName : (viewName + DEFAULT_TEMPLATE_SUFFX);
-        File templateFile = new File((templateRootDir.getPath() + "/" + viewName).replaceAll("/+","/"));
+        File templateFile = new File((templateRootDir.getPath() + "/" + viewName).replaceAll("/+", "/"));
         return new GPView(templateFile);
     }
 

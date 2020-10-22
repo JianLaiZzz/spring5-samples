@@ -1,84 +1,83 @@
 package org.jdbc.sqlhelper;
 
 
-import java.sql.Connection;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+import java.sql.Connection;
 
 /**
- * Êý¾Ý¿âÁ¬½Ó¹ÜÀíÀà
+ * ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½ï¿½ï¿½
+ *
  * @author tanyongde
  */
 public class ConManager {
-	
-	private static Pool dbPool;
-	
-	private static ConManager instance = null;// µ¥Àý¶ÔÏó
-	
 
-	/**
-	 * Ë½ÓÐ¹¹Ôì·½·¨£¬½ûÖ¹Íâ²¿´´½¨±¾Àà¶ÔÏó£¬ÏëÒª»ñµÃ±¾Àà¶ÔÏó£¬Í¨¹ý<code>getIstance</code>·½·¨ Ê¹ÓÃÁËÉè¼ÆÄ£Ê½ÖÐµÄµ¥ÀýÄ£Ê½
-	 */
-	private ConManager() {
-	}
-	/**
-	 * ÊÍ·ÅÊý¾Ý¿âÁ¬½Ó¶ÔÏó
-	 */
-	protected static void closeCon(Connection con) {
-			dbPool.freeConnection(con);
-	}
+    private static Pool dbPool;
 
-	/**
-	 * ·µ»Øµ±Ç°Á¬½Ó¹ÜÀíÀàµÄÒ»¸ö¶ÔÏó
-	 */
-	private static ConManager getInstance() {
-		if (null == instance) {
-			instance = new ConManager();
-		}
-		return instance;
-	}
+    private static ConManager instance = null;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-	/**
-	 * ´Ó×Ô¶¨ÒåÊý¾Ý¿âÁ¬½Ó³ØÖÐ»ñµÃÒ»¸öÁ¬½Ó¶ÔÏó
-	 * @return
-	 */
-	protected static Connection getConnection()
-	{
-		Connection conn = null;
-		try
-		{
-			if(dbPool == null)
-			{
-				dbPool = DBConnectionPool.getInstance();
-			}
-			conn = dbPool.getConnection();
-		}catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		return conn;
-	}
-	
-	/**
-	 *  Ê¹ÓÃ JNDI ´Ó ÈÝÆ÷µÄÊý¾Ý¿âÁ¬½Ó³ØÖÐ »ñµÃÒ»¸öÁ¬½Ó¶ÔÏó
-	 * @param accessPool ÊÇ·ñÍ¨¹ýÈÝÆ÷Á¬½Ó³Ø»ñµÃÁ¬½Ó
-	 * 		  Tomcat ÈÝÆ÷µÄ×Ö·û´® "java:comp/env/...(Êý¾ÝÔ´Ãû)"
-	 * @return
-	 */
-	protected static Connection getConnection(String lookupStr) {
-		Connection conn = null;
-		try {
-			ConManager.getInstance();
-			//Ê¹ÓÃ JNDI ´ÓTomcat ÈÝÆ÷µÄÊý¾Ý¿âÁ¬½Ó³ØÖÐ »ñµÃÒ»¸öÁ¬½Ó¶ÔÏó
-			Context ctx = new InitialContext();
-			DataSource ds = (DataSource)ctx.lookup(lookupStr);
-			conn = ds.getConnection();
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
-		return conn;
-	}
+
+    /**
+     * Ë½ï¿½Ð¹ï¿½ï¿½ì·½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½â²¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½<code>getIstance</code>ï¿½ï¿½ï¿½ï¿½ Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ÐµÄµï¿½ï¿½ï¿½Ä£Ê½
+     */
+    private ConManager() {
+    }
+
+    /**
+     * ï¿½Í·ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
+     */
+    protected static void closeCon(Connection con) {
+        dbPool.freeConnection(con);
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½Øµï¿½Ç°ï¿½ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     */
+    private static ConManager getInstance() {
+        if (null == instance) {
+            instance = new ConManager();
+        }
+        return instance;
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½Ð»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
+     *
+     * @return
+     */
+    protected static Connection getConnection() {
+        Connection conn = null;
+        try {
+            if (dbPool == null) {
+                dbPool = DBConnectionPool.getInstance();
+            }
+            conn = dbPool.getConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return conn;
+    }
+
+    /**
+     * Ê¹ï¿½ï¿½ JNDI ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
+     *
+     * @param accessPool ï¿½Ç·ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³Ø»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     *                   Tomcat ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ "java:comp/env/...(ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½)"
+     * @return
+     */
+    protected static Connection getConnection(String lookupStr) {
+        Connection conn = null;
+        try {
+            ConManager.getInstance();
+            //Ê¹ï¿½ï¿½ JNDI ï¿½ï¿½Tomcat ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
+            Context ctx = new InitialContext();
+            DataSource ds = (DataSource) ctx.lookup(lookupStr);
+            conn = ds.getConnection();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return conn;
+    }
 
 }

@@ -11,7 +11,7 @@ public class PromotionActivity {
         this.promotionStrategy = promotionStrategy;
     }
 
-    public void execute(){
+    public void execute() {
         promotionStrategy.doPromotion();
     }
 

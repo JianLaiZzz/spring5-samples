@@ -1,8 +1,9 @@
 package com.gupaoedu.vip.design.principle.simpleresponsibility.interfaced;
+
 /**
  * Created by Tom
  */
-public class CourseImpl implements ICourseManager,ICourseInfo {
+public class CourseImpl implements ICourseManager, ICourseInfo {
     @Override
     public void studyCourse() {
 

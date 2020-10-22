@@ -10,7 +10,7 @@ import java.lang.reflect.Constructor;
 public class LazyInnerClassSingletonTest {
 
     public static void main(String[] args) {
-        try{
+        try {
             //很无聊的情况下，进行破坏
             Class<?> clazz = LazyInnerClassSingleton.class;
 
@@ -28,7 +28,7 @@ public class LazyInnerClassSingletonTest {
 
             System.out.println(o1 == o2);
 //            Object o2 = c.newInstance();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

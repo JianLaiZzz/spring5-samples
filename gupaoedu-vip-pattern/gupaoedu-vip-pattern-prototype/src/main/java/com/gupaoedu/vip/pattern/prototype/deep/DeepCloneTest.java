@@ -7,7 +7,7 @@ public class DeepCloneTest {
 
         QiTianDaSheng qiTianDaSheng = new QiTianDaSheng();
         try {
-            QiTianDaSheng clone = (QiTianDaSheng)qiTianDaSheng.clone();
+            QiTianDaSheng clone = (QiTianDaSheng) qiTianDaSheng.clone();
             System.out.println("深克隆：" + (qiTianDaSheng.jinGuBang == clone.jinGuBang));
         } catch (Exception e) {
             e.printStackTrace();

@@ -7,11 +7,11 @@ import java.util.Date;
 /**
  * Created by Tom.
  */
-public class QiTianDaSheng extends Monkey implements Cloneable,Serializable {
+public class QiTianDaSheng extends Monkey implements Cloneable, Serializable {
 
     public JinGuBang jinGuBang;
 
-    public  QiTianDaSheng(){
+    public QiTianDaSheng() {
         //只是初始化
         this.birthday = new Date();
         this.jinGuBang = new JinGuBang();
@@ -23,8 +23,8 @@ public class QiTianDaSheng extends Monkey implements Cloneable,Serializable {
     }
 
 
-    public Object deepClone(){
-        try{
+    public Object deepClone() {
+        try {
 
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(bos);
@@ -33,11 +33,11 @@ public class QiTianDaSheng extends Monkey implements Cloneable,Serializable {
             ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
             ObjectInputStream ois = new ObjectInputStream(bis);
 
-            QiTianDaSheng copy = (QiTianDaSheng)ois.readObject();
+            QiTianDaSheng copy = (QiTianDaSheng) ois.readObject();
             copy.birthday = new Date();
             return copy;
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -45,7 +45,7 @@ public class QiTianDaSheng extends Monkey implements Cloneable,Serializable {
     }
 
 
-    public QiTianDaSheng shallowClone(QiTianDaSheng target){
+    public QiTianDaSheng shallowClone(QiTianDaSheng target) {
 
         QiTianDaSheng qiTianDaSheng = new QiTianDaSheng();
         qiTianDaSheng.height = target.height;
@@ -53,7 +53,7 @@ public class QiTianDaSheng extends Monkey implements Cloneable,Serializable {
 
         qiTianDaSheng.jinGuBang = target.jinGuBang;
         qiTianDaSheng.birthday = new Date();
-        return  qiTianDaSheng;
+        return qiTianDaSheng;
     }
 
 

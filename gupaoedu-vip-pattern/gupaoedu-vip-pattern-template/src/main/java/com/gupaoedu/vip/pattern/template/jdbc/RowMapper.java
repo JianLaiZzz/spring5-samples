@@ -7,5 +7,5 @@ import java.sql.ResultSet;
  * Created by Tom on 2019/3/16.
  */
 public interface RowMapper<T> {
-    T mapRow(ResultSet rs,int rowNum) throws Exception;
+    T mapRow(ResultSet rs, int rowNum) throws Exception;
 }

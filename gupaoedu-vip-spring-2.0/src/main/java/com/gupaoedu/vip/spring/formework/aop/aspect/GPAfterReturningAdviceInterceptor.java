@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 /**
  * Created by Tom on 2019/4/15.
  */
-public class GPAfterReturningAdviceInterceptor extends GPAbstractAspectAdvice implements GPAdvice,GPMethodInterceptor {
+public class GPAfterReturningAdviceInterceptor extends GPAbstractAspectAdvice implements GPAdvice, GPMethodInterceptor {
 
     private GPJoinPoint joinPoint;
 
@@ -20,11 +20,11 @@ public class GPAfterReturningAdviceInterceptor extends GPAbstractAspectAdvice im
     public Object invoke(GPMethodInvocation mi) throws Throwable {
         Object retVal = mi.proceed();
         this.joinPoint = mi;
-        this.afterReturning(retVal,mi.getMethod(),mi.getArguments(),mi.getThis());
+        this.afterReturning(retVal, mi.getMethod(), mi.getArguments(), mi.getThis());
         return retVal;
     }
 
     private void afterReturning(Object retVal, Method method, Object[] arguments, Object aThis) throws Throwable {
-        super.invokeAdviceMethod(this.joinPoint,retVal,null);
+        super.invokeAdviceMethod(this.joinPoint, retVal, null);
     }
 }

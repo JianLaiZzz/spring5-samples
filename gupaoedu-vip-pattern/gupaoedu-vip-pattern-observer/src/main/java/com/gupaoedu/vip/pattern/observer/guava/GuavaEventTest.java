@@ -1,7 +1,6 @@
 package com.gupaoedu.vip.pattern.observer.guava;
 
 import com.google.common.eventbus.EventBus;
-import org.springframework.web.context.ContextLoaderListener;
 
 /**
  * Created by Tom on 2019/3/17.

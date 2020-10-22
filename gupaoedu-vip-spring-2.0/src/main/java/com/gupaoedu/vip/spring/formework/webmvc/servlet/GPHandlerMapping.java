@@ -1,19 +1,18 @@
 package com.gupaoedu.vip.spring.formework.webmvc.servlet;
 
 import java.lang.reflect.Method;
-import java.util.Comparator;
 import java.util.regex.Pattern;
 
 /**
  * Created by Tom on 2019/4/13.
  */
-public class GPHandlerMapping{
+public class GPHandlerMapping {
 
-    private Object controller;	//保存方法对应的实例
-    private Method method;		//保存映射的方法
+    private Object controller;    //保存方法对应的实例
+    private Method method;        //保存映射的方法
     private Pattern pattern;    //URL的正则匹配
 
-    public GPHandlerMapping(Pattern pattern,Object controller, Method method) {
+    public GPHandlerMapping(Pattern pattern, Object controller, Method method) {
         this.controller = controller;
         this.method = method;
         this.pattern = pattern;

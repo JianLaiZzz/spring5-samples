@@ -1,13 +1,11 @@
 package com.gupaoedu.vip.pattern.singleton.test;
 
 import com.gupaoedu.vip.pattern.singleton.lazy.LazyDoubleCheckSingleton;
-import com.gupaoedu.vip.pattern.singleton.lazy.LazySimpleSingleton;
-import com.gupaoedu.vip.pattern.singleton.threadlocal.ThreadLocalSingleton;
 
 /**
  * Created by Tom.
  */
-public class ExectorThread implements Runnable{
+public class ExectorThread implements Runnable {
 
     public void run() {
 

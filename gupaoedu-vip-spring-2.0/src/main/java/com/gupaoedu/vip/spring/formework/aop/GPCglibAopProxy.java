@@ -5,7 +5,7 @@ import com.gupaoedu.vip.spring.formework.aop.support.GPAdvisedSupport;
 /**
  * Created by Tom on 2019/4/14.
  */
-public class GPCglibAopProxy implements  GPAopProxy {
+public class GPCglibAopProxy implements GPAopProxy {
     public GPCglibAopProxy(GPAdvisedSupport config) {
     }
 

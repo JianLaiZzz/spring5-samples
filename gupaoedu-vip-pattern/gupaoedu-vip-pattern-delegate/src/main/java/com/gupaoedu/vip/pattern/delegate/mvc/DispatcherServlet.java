@@ -1,8 +1,6 @@
 package com.gupaoedu.vip.pattern.delegate.mvc;
 
 import com.gupaoedu.vip.pattern.delegate.mvc.controllers.MemberController;
-import com.gupaoedu.vip.pattern.delegate.mvc.controllers.OrderController;
-import com.gupaoedu.vip.pattern.delegate.mvc.controllers.SystemController;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +16,7 @@ import java.util.List;
  * 相当于是项目经理的角色
  * Created by Tom.
  */
-public class DispatcherServlet extends HttpServlet{
+public class DispatcherServlet extends HttpServlet {
 
     private List<Handler> handlerMapping = new ArrayList<Handler>();
 
@@ -29,7 +27,7 @@ public class DispatcherServlet extends HttpServlet{
                     .setController(memberControllerClass.newInstance())
                     .setMethod(memberControllerClass.getMethod("getMemberById", new Class[]{String.class}))
                     .setUrl("/web/getMemberById.json"));
-        }catch(Exception e){
+        } catch (Exception e) {
 
         }
     }
@@ -53,19 +51,19 @@ public class DispatcherServlet extends HttpServlet{
 //    }
 
 
-    private void doDispatch(HttpServletRequest request, HttpServletResponse response){
+    private void doDispatch(HttpServletRequest request, HttpServletResponse response) {
 
         //1、获取用户请求的url
         //   如果按照J2EE的标准、每个url对对应一个Serlvet，url由浏览器输入
-       String uri = request.getRequestURI();
+        String uri = request.getRequestURI();
 
         //2、Servlet拿到url以后，要做权衡（要做判断，要做选择）
         //   根据用户请求的URL，去找到这个url对应的某一个java类的方法
 
         //3、通过拿到的URL去handlerMapping（我们把它认为是策略常量）
         Handler handle = null;
-        for (Handler h: handlerMapping) {
-            if(uri.equals(h.getUrl())){
+        for (Handler h : handlerMapping) {
+            if (uri.equals(h.getUrl())) {
                 handle = h;
                 break;
             }
@@ -74,7 +72,7 @@ public class DispatcherServlet extends HttpServlet{
         //4、将具体的任务分发给Method（通过反射去调用其对应的方法）
         Object object = null;
         try {
-            object = handle.getMethod().invoke(handle.getController(),request.getParameter("mid"));
+            object = handle.getMethod().invoke(handle.getController(), request.getParameter("mid"));
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -89,14 +87,14 @@ public class DispatcherServlet extends HttpServlet{
 
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            doDispatch(req,resp);
+            doDispatch(req, resp);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-    class Handler{
+    class Handler {
 
         private Object controller;
         private Method method;

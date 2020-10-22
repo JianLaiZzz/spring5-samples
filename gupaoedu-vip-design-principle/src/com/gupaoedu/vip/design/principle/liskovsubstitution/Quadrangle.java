@@ -6,5 +6,6 @@ package com.gupaoedu.vip.design.principle.liskovsubstitution;
  */
 public interface Quadrangle {
     long getWidth();
+
     long getHeight();
 }

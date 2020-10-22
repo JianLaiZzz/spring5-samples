@@ -1,7 +1,5 @@
 package com.gupaoedu.vip.spring.formework.beans.config;
 
-import lombok.Data;
-
 /**
  * Created by Tom.
  */

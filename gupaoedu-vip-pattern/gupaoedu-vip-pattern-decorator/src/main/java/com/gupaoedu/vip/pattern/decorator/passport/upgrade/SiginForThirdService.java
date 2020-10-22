@@ -15,11 +15,11 @@ public class SiginForThirdService implements ISiginForThirdService {
     }
 
     public ResultMsg regist(String username, String password) {
-        return signinService.regist(username,password);
+        return signinService.regist(username, password);
     }
 
     public ResultMsg login(String username, String password) {
-        return signinService.login(username,password);
+        return signinService.login(username, password);
     }
 
     public ResultMsg loginForQQ(String id) {

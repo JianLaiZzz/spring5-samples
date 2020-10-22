@@ -15,21 +15,21 @@ public class Tom {
         this.course = course;
     }
 
-    public void study(){
+    public void study() {
         course.study();
     }
 
 
-    public void studyJavaCourse(){
+    public void studyJavaCourse() {
         System.out.println("Tom在学习Java的课程");
     }
 
-    public void studyPythonCourse(){
+    public void studyPythonCourse() {
         System.out.println("Tom在学习Python的课程");
     }
 
 
-    public void study(ICourse course){
+    public void study(ICourse course) {
         course.study();
     }
 

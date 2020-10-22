@@ -3,10 +3,6 @@ package com.gupaoedu.vip.pattern.decorator.passport;
 import com.gupaoedu.vip.pattern.decorator.passport.old.SigninService;
 import com.gupaoedu.vip.pattern.decorator.passport.upgrade.ISiginForThirdService;
 import com.gupaoedu.vip.pattern.decorator.passport.upgrade.SiginForThirdService;
-import org.springframework.cache.transaction.TransactionAwareCacheDecorator;
-import org.springframework.http.server.reactive.HttpHeadResponseDecorator;
-
-import java.io.BufferedReader;
 
 /**
  * Created by Tom on 2019/3/17.

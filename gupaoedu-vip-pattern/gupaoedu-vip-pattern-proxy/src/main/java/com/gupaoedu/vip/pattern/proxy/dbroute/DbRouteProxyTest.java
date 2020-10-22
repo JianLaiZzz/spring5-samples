@@ -1,7 +1,6 @@
 package com.gupaoedu.vip.pattern.proxy.dbroute;
 
 import com.gupaoedu.vip.pattern.proxy.dbroute.proxy.OrderServiceDynamicProxy;
-import com.gupaoedu.vip.pattern.proxy.dbroute.proxy.OrderServiceStaticProxy;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,9 +19,9 @@ public class DbRouteProxyTest {
             Date date = sdf.parse("2017/02/01");
             order.setCreateTime(date.getTime());
 
-            IOrderService orderService = (IOrderService)new OrderServiceDynamicProxy().getInstance(new OrderService());
+            IOrderService orderService = (IOrderService) new OrderServiceDynamicProxy().getInstance(new OrderService());
             orderService.createOrder(order);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

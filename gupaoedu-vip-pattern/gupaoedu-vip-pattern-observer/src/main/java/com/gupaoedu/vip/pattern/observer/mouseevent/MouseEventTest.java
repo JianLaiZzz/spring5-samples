@@ -22,7 +22,7 @@ public class MouseEventTest {
 
             mouse.blur();
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

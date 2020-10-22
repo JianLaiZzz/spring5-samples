@@ -7,202 +7,187 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Êý¾Ý¿â²Ù×÷Àà
- * °üº¬Á½¸ö¹¹Ôìº¯Êý <br/>
- * <b><font color="red">DataBaseCmd()</font></b> Ê¹ÓÃ×Ô¶¨ÒåÁ¬½Ó³Ø»ñµÃÁ¬½Ó<br/>
- * <b><font color="red">DataBaseCmd(String datasource)</font></b> Ö¸¶¨ JNDI µÄÊý¾ÝÔ´Ãû³Æ
+ * ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½ <br/>
+ * <b><font color="red">DataBaseCmd()</font></b> Ê¹ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³Ø»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<br/>
+ * <b><font color="red">DataBaseCmd(String datasource)</font></b> Ö¸ï¿½ï¿½ JNDI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½
+ *
  * @author tanyongde
- * 
  */
 public class DataBaseCmd {
-	
-	private PreparedStatement pstmt = null;// Á¬½ÓÓï¾ä
-	private Connection con = null;// »ñÈ¡Á¬½Ó¶ÔÏó
-	private ResultSet rs = null;
-	private String datasource = null; //Ö¸¶¨Ê¹ÓÃµÄÊý¾ÝÔ´
-	/**
-	 * Ä¬ÈÏ¹¹ÔìÆ÷
-	 *
-	 */
-	public DataBaseCmd()
-	{
-		
-	}
-	/**
-	 * ¹¹ÔìÆ÷
-	 * @param datasource Ö¸¶¨Ê¹ÓÃµÄJNDI²éÕÒµÄÊý¾ÝÔ´Ãû³Æ
-	 * 	Tomcat µÄÊý¾ÝÔ´ÃûÎª java:comp/env/test
-	 */
-	public DataBaseCmd(String datasource)
-	{
-		this.datasource = datasource;
-	}
-	 /**
-	    * ³õÊ¼»¯Êý¾Ý¿âÁ¬½Ó¶ÔÏó
-	    */
-	   private synchronized void initCon()
-	   {
-		   try {
-			   if(null == con)
-			   {
-				   if(null == datasource || "".equals(datasource))
-				   {
-					   con = ConManager.getConnection();
-				   }else
-				   {
-					   con = ConManager.getConnection(datasource);
-				   }
-			   }
-		   } catch (Exception e) {
-			   e.printStackTrace();
-		   }
-	   }
-	
-	 /**
-	  * ²éÑ¯±í¸ñÊý¾Ý,´Ë·½·¨Ò»°ã½«µ¥±íÖÐËùÓÐµÄÊý¾Ý²éÑ¯³öÀ´£¬Èç¹ûÐèÒªÆ¥ÅäÌõ¼þ²éÑ¯£¬Ôò×îºÃÔÚÒµÎñÂß¼­²ã»òÕß½çÃæ²ã×öÊý¾Ý½âÎö»òÕßÔÚ²éÑ¯Óï¾äÖÐÖ±½Ó´øÌõ¼þ
-	  * @param sql ÒªÖ´ÐÐµÄsqlÓï¾ä»òÕß´æ´¢¹ý³ÌµÄÃû³Æ
-	  * @param cmdtype Ö¸¶¨sql²ÎÊýµÄÀàÐÍ£ºtrueÎª´æ´¢¹ý³Ì£¬falseÎªsqlÓï¾ä
-	  * @param values Ö¸¶¨sqlÓï¾äÖÐµÄ²ÎÊýÁÐ±í
-	  * @return ·µ»Ø¸üÐÂºóµÄ½á¹û¼¯
-	  * @throws Exception
-	  */
-	 public ResultSet excuteQuery(String sql, boolean cmdtype,List values)throws Exception
-	 {
-		 try
-		 {
-			 initCon();
-			 //´¢´æ¹ý³Ì´¦Àí
-			 if(cmdtype)
-			 {
-				 pstmt = con.prepareCall(sql);  //´¦Àí´æ´¢¹ý³ÌµÄÓï¾ä¼¯
-			 }else
-			 {
-				 pstmt = con.prepareStatement(sql);
-			 }
-			 if(values != null && values.size() >0)
-			 {
-				 setValues(pstmt,values);
-			 }
-			rs = pstmt.executeQuery();
-			return rs;
-		 }catch(Exception ex)
-		 {
-				throw ex; 
-		 }
-	 }
-	
-	 /**
-	  *  ÊµÏÖ¶ÔÊý¾ÝµÄµÄÔö£¯É¾£¯¸Ä 
-	  * @param sql ÒªÖ´ÐÐµÄsqlÓï¾ä»òÕß´æ´¢¹ý³ÌµÄÃû³Æ
-	  * @param cmdtype Ö¸¶¨sql²ÎÊýµÄÀàÐÍ£ºtrueÎª´æ´¢¹ý³Ì£¬falseÎªsqlÓï¾ä
-	  * @param values ´æ´¢¹ý³Ì»òÕßsqlÓï¾äÖÐÒªÖ¸¶¨µÄ²ÎÊýÁÐ±í£¬ÎÞÔòÎªnull
-	  * @return trueÖ´ÐÐ³É¹¦£¬falseÖ´ÐÐÊ§°Ü
-	  * @throws Exception
-	  */
-	 public int excuteUpdate(String sql,boolean cmdtype,List values)throws Exception
-	 {
-		 int noOfRows = 0;
-		 try
-		 {
-			 initCon();
-			 if(cmdtype)
-			 {
-				 pstmt = con.prepareCall(sql);  //´¦Àí´æ´¢¹ý³ÌµÄÓï¾ä¼¯
-			 }else
-			 {
-				 pstmt = con.prepareStatement(sql);
-			 }
-			 if(values != null && values.size() >0)
-			 {
-				 setValues(pstmt,values);
-			 }
-			 noOfRows = pstmt.executeUpdate();
-		 }catch(Exception ex)
-		 {
-			throw ex; 
-		 }
-		 return noOfRows; 
-	 }
-	 
 
-	/**
-	 * ¹Ø±ÕÁ¬½Ó
-	 */
-	public void closeConnection() {
-		try {
-			if (null != con && !con.isClosed()) {
+    private PreparedStatement pstmt = null;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private Connection con = null;// ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
+    private ResultSet rs = null;
+    private String datasource = null; //Ö¸ï¿½ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Ô´
 
-				ConManager.closeCon(con);
-				con = null;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
+    /**
+     * Ä¬ï¿½Ï¹ï¿½ï¿½ï¿½ï¿½ï¿½
+     */
+    public DataBaseCmd() {
 
-	/**
-	 * ¹Ø±ÕÓï¾ä¼¯
-	 */
-	public void closePstmt() {
-		if (null != pstmt) {
-			try {
-				pstmt.close();
-				pstmt = null;
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+    }
 
-		}
-	}
+    /**
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     *
+     * @param datasource Ö¸ï¿½ï¿½Ê¹ï¿½Ãµï¿½JNDIï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½
+     *                   Tomcat ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½Îª java:comp/env/test
+     */
+    public DataBaseCmd(String datasource) {
+        this.datasource = datasource;
+    }
 
-	/**
-	 * ¹Ø±Õ½á¹û¼¯
-	 */
-	public void closeResultSet() {
-		if (null != rs) {
-			try {
-				rs.close();
-				rs = null;
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+    /**
+     * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
+     */
+    private synchronized void initCon() {
+        try {
+            if (null == con) {
+                if (null == datasource || "".equals(datasource)) {
+                    con = ConManager.getConnection();
+                } else {
+                    con = ConManager.getConnection(datasource);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-		}
-	}
-	
-	/**
-	 * ¹Ø±ÕËùÓÐÊý¾Ý¿â·ÃÎÊ¶ÔÏó
-	 *
-	 */
-	public void closeAll()
-	{
-		closePstmt();
-		closeResultSet();
-		closeConnection();
-	}
-	 
-	 /**
-	  * Éè¶¨Óï¾ä µÃ²ÎÊý
-	  * @param pstmt Óï¾ä¼¯ ¶ÔÏó
-	  * @param values Ö¸¶¨ sql Óï¾äÖÐµÄ²ÎÊýÁÐ±í
-	  * @throws SQLException
-	  */
-	 private void setValues(PreparedStatement pstmt,List values)throws SQLException
-	 {
-		 for(int i=0;i<values.size();i++)
-		 {
-			 Object v = values.get(i);
-			 pstmt.setObject(i+1, v);
-		 }
-	 }
-	 
-	 /**
-	  * (²»½¨ÒéÊ¹ÓÃµÄ·½·¨)Ê¹ÓÃ JNDI µÄ·½Ê½»ñÈ¡Êý¾ÝÔ´Ê±Ó¦Ê¹ÓÃ´Ë·½·¨
-	  * ½¨ÒéÔÚ¹¹ÔìÆ÷ÖÐÖ±½Ó´«µÝ²ÎÊý
-	  * @param datasource Êý¾Ý¿âÁ¬½ÓÊ¹ÓÃµÄÊý¾ÝÔ´Ãû³Æ
-	  * @deprecated
-	  */
-	public void setDatasource(String datasource) {
-		this.datasource = datasource;
-	}
+    /**
+     * ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Ë·ï¿½ï¿½ï¿½Ò»ï¿½ã½«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½Ý²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÆ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½
+     *
+     * @param sql     ÒªÖ´ï¿½Ðµï¿½sqlï¿½ï¿½ï¿½ï¿½ï¿½ß´æ´¢ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½
+     * @param cmdtype Ö¸ï¿½ï¿½sqlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½trueÎªï¿½æ´¢ï¿½ï¿½ï¿½Ì£ï¿½falseÎªsqlï¿½ï¿½ï¿½
+     * @param values  Ö¸ï¿½ï¿½sqlï¿½ï¿½ï¿½ï¿½ÐµÄ²ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+     * @return ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½Âºï¿½Ä½ï¿½ï¿½ï¿½ï¿½
+     * @throws Exception
+     */
+    public ResultSet excuteQuery(String sql, boolean cmdtype, List values) throws Exception {
+        try {
+            initCon();
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ï¿½ï¿½
+            if (cmdtype) {
+                pstmt = con.prepareCall(sql);  //ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ä¼¯
+            } else {
+                pstmt = con.prepareStatement(sql);
+            }
+            if (values != null && values.size() > 0) {
+                setValues(pstmt, values);
+            }
+            rs = pstmt.executeQuery();
+            return rs;
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
+
+    /**
+     * Êµï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ÝµÄµï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½
+     *
+     * @param sql     ÒªÖ´ï¿½Ðµï¿½sqlï¿½ï¿½ï¿½ï¿½ï¿½ß´æ´¢ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½
+     * @param cmdtype Ö¸ï¿½ï¿½sqlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½trueÎªï¿½æ´¢ï¿½ï¿½ï¿½Ì£ï¿½falseÎªsqlï¿½ï¿½ï¿½
+     * @param values  ï¿½æ´¢ï¿½ï¿½ï¿½Ì»ï¿½ï¿½ï¿½sqlï¿½ï¿½ï¿½ï¿½ï¿½ÒªÖ¸ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½Îªnull
+     * @return trueÖ´ï¿½Ð³É¹ï¿½ï¿½ï¿½falseÖ´ï¿½ï¿½Ê§ï¿½ï¿½
+     * @throws Exception
+     */
+    public int excuteUpdate(String sql, boolean cmdtype, List values) throws Exception {
+        int noOfRows = 0;
+        try {
+            initCon();
+            if (cmdtype) {
+                pstmt = con.prepareCall(sql);  //ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ä¼¯
+            } else {
+                pstmt = con.prepareStatement(sql);
+            }
+            if (values != null && values.size() > 0) {
+                setValues(pstmt, values);
+            }
+            noOfRows = pstmt.executeUpdate();
+        } catch (Exception ex) {
+            throw ex;
+        }
+        return noOfRows;
+    }
+
+
+    /**
+     * ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½
+     */
+    public void closeConnection() {
+        try {
+            if (null != con && !con.isClosed()) {
+
+                ConManager.closeCon(con);
+                con = null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * ï¿½Ø±ï¿½ï¿½ï¿½ä¼¯
+     */
+    public void closePstmt() {
+        if (null != pstmt) {
+            try {
+                pstmt.close();
+                pstmt = null;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    /**
+     * ï¿½Ø±Õ½ï¿½ï¿½ï¿½ï¿½
+     */
+    public void closeResultSet() {
+        if (null != rs) {
+            try {
+                rs.close();
+                rs = null;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    /**
+     * ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½ï¿½
+     */
+    public void closeAll() {
+        closePstmt();
+        closeResultSet();
+        closeConnection();
+    }
+
+    /**
+     * ï¿½è¶¨ï¿½ï¿½ï¿½ ï¿½Ã²ï¿½ï¿½ï¿½
+     *
+     * @param pstmt  ï¿½ï¿½ä¼¯ ï¿½ï¿½ï¿½ï¿½
+     * @param values Ö¸ï¿½ï¿½ sql ï¿½ï¿½ï¿½ï¿½ÐµÄ²ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+     * @throws SQLException
+     */
+    private void setValues(PreparedStatement pstmt, List values) throws SQLException {
+        for (int i = 0; i < values.size(); i++) {
+            Object v = values.get(i);
+            pstmt.setObject(i + 1, v);
+        }
+    }
+
+    /**
+     * (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ÃµÄ·ï¿½ï¿½ï¿½)Ê¹ï¿½ï¿½ JNDI ï¿½Ä·ï¿½Ê½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ô´Ê±Ó¦Ê¹ï¿½Ã´Ë·ï¿½ï¿½ï¿½
+     * ï¿½ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó´ï¿½ï¿½Ý²ï¿½ï¿½ï¿½
+     *
+     * @param datasource ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½
+     * @deprecated
+     */
+    public void setDatasource(String datasource) {
+        this.datasource = datasource;
+    }
 }

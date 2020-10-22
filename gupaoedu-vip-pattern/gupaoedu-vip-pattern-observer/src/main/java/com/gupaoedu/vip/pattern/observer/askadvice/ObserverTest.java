@@ -1,9 +1,5 @@
 package com.gupaoedu.vip.pattern.observer.askadvice;
 
-import org.springframework.web.context.ContextLoaderListener;
-
-import java.util.Comparator;
-
 /**
  * Created by Tom
  */
@@ -22,7 +18,7 @@ public class ObserverTest {
         question.setUserName("小明");
         question.setContent("观察者模式适用于哪些场景？");
 
-        course.publishQuestion(course,question);
+        course.publishQuestion(course, question);
 
     }
 }

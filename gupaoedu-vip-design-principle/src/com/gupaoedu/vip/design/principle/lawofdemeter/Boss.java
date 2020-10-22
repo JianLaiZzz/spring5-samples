@@ -1,9 +1,6 @@
 package com.gupaoedu.vip.design.principle.lawofdemeter;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Tom
  */
@@ -18,7 +15,7 @@ public class Boss {
 //        teamLeader.checkNumberOfCourses(courseList);
 //    }
 
-    public void commandCheckNumber(TeamLeader teamLeader){
+    public void commandCheckNumber(TeamLeader teamLeader) {
         teamLeader.checkNumberOfCourses();
     }
 

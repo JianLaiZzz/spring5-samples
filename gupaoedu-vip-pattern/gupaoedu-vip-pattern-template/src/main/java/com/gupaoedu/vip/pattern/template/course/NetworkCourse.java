@@ -7,7 +7,7 @@ package com.gupaoedu.vip.pattern.template.course;
  */
 public abstract class NetworkCourse {
 
-    protected final void createCourse(){
+    protected final void createCourse() {
         //1、发布预习资料
         this.postPreResource();
 
@@ -25,7 +25,7 @@ public abstract class NetworkCourse {
 
         //6、布置作业，有些课是没有作业，有些课是有作业的
         //如果有作业的话，检查作业，如果没作业，完成了
-        if(needHomework()){
+        if (needHomework()) {
             checkHomework();
         }
     }
@@ -33,25 +33,27 @@ public abstract class NetworkCourse {
     abstract void checkHomework();
 
     //钩子方法：实现流程的微调
-    protected boolean needHomework(){return false;}
+    protected boolean needHomework() {
+        return false;
+    }
 
-    final void postSource(){
+    final void postSource() {
         System.out.println("提交源代码");
     }
 
-    final void postNote(){
+    final void postNote() {
         System.out.println("提交课件和笔记");
     }
 
-    final void liveVideo(){
+    final void liveVideo() {
         System.out.println("直播授课");
     }
 
-    final void createPPT(){
+    final void createPPT() {
         System.out.println("创建备课PPT");
     }
 
-    final void postPreResource(){
+    final void postPreResource() {
         System.out.println("分发预习资料");
     }
 

@@ -4,15 +4,15 @@ package com.gupaoedu.vip.design.principle.liskovsubstitution.simple;
  * Created by Tom.
  */
 public class SimpleTest {
-    public static void resize(Rectangle rectangle){
-        while (rectangle.getWidth() >= rectangle.getHeight()){
+    public static void resize(Rectangle rectangle) {
+        while (rectangle.getWidth() >= rectangle.getHeight()) {
             rectangle.setHeight(rectangle.getHeight() + 1);
-            System.out.println("width:"+rectangle.getWidth() +
-                    ",height:"+rectangle.getHeight());
+            System.out.println("width:" + rectangle.getWidth() +
+                    ",height:" + rectangle.getHeight());
         }
         System.out.println("resize方法结束" +
-                "\nwidth:"+rectangle.getWidth() +
-                ",height:"+rectangle.getHeight());
+                "\nwidth:" + rectangle.getWidth() +
+                ",height:" + rectangle.getHeight());
     }
 
     public static void main(String[] args) {

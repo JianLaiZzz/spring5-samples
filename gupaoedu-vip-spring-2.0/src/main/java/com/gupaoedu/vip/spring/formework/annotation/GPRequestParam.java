@@ -1,23 +1,19 @@
 package com.gupaoedu.vip.spring.formework.annotation;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * 请求参数映射
- * @author Tom
  *
+ * @author Tom
  */
 @Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface GPRequestParam {
-	
-	String value() default "";
-	
-	boolean required() default true;
+
+    String value() default "";
+
+    boolean required() default true;
 
 }

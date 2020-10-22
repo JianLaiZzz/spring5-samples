@@ -1,9 +1,5 @@
 package com.gupaoedu.vip.pattern.adapter.loginadapter.v2;
 
-import org.springframework.aop.framework.adapter.AdvisorAdapter;
-import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.servlet.HandlerAdapter;
-
 /**
  * Created by Tom.
  */

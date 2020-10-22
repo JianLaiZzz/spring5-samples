@@ -11,16 +11,16 @@ public class SigninForThirdService implements ISigninForThirdService {
 
     private ISigninService signin;
 
-    public SigninForThirdService(ISigninService iSignin){
+    public SigninForThirdService(ISigninService iSignin) {
         this.signin = signin;
     }
 
-    public ResultMsg regist(String username, String passport){
-        return signin.regist(username,passport);
+    public ResultMsg regist(String username, String passport) {
+        return signin.regist(username, passport);
     }
 
-    public ResultMsg login(String username,String passport){
-        return  signin.login(username,passport);
+    public ResultMsg login(String username, String passport) {
+        return signin.login(username, passport);
     }
 
     public ResultMsg loginForQQ(String id) {

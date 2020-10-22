@@ -71,7 +71,7 @@
                     <target>1.6</target>
                     <encoding>UTF-8</encoding>
                     <compilerArguments>
-                        <verbose />
+                        <verbose/>
                         <bootclasspath>${java.home}/lib/rt.jar</bootclasspath>
                     </compilerArguments>
                 </configuration>

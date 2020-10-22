@@ -1,4 +1,5 @@
 package com.gupaoedu.vip.pattern.strategy.promotion;
+
 /**
  * 无优惠
  * Created by Tom

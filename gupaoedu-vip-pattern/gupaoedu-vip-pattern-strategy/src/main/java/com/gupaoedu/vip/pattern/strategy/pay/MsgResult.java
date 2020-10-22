@@ -15,7 +15,7 @@ public class MsgResult {
         this.msg = msg;
     }
 
-    public String toString(){
+    public String toString() {
         return ("支付状态：[" + code + "]," + msg + ",交易详情：" + data);
     }
 }

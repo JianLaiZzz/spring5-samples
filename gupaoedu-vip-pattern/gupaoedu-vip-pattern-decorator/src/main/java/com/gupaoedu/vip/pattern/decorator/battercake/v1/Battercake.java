@@ -5,11 +5,11 @@ package com.gupaoedu.vip.pattern.decorator.battercake.v1;
  */
 public class Battercake {
 
-    protected String getMsg(){
+    protected String getMsg() {
         return "煎饼";
     }
 
-    public int getPrice(){
+    public int getPrice() {
         return 5;
     }
 

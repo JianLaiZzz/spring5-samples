@@ -30,12 +30,12 @@ public class CourseFactory {
 //        return null;
 //    }
 
-    public ICourse create(Class<? extends ICourse> clazz){
+    public ICourse create(Class<? extends ICourse> clazz) {
         try {
             if (null != clazz) {
                 return clazz.newInstance();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

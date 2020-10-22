@@ -8,7 +8,7 @@ import com.gupaoedu.vip.pattern.adapter.loginadapter.v1.service.SinginForThirdSe
 public class SiginForThirdServiceTest {
     public static void main(String[] args) {
         SinginForThirdService service = new SinginForThirdService();
-        service.login("tom","123456");
+        service.login("tom", "123456");
         service.loginForQQ("sdfasdfasf");
         service.loginForWechat("sdfasfsa");
     }

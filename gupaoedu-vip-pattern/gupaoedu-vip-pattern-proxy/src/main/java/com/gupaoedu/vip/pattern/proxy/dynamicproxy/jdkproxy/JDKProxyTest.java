@@ -1,9 +1,5 @@
 package com.gupaoedu.vip.pattern.proxy.dynamicproxy.jdkproxy;
 
-import com.gupaoedu.vip.pattern.proxy.Person;
-import sun.misc.ProxyGenerator;
-
-import java.io.FileOutputStream;
 import java.lang.reflect.Method;
 
 /**
@@ -15,7 +11,7 @@ public class JDKProxyTest {
         try {
 
             Object obj = new JDKMeipo().getInstance(new Girl());
-            Method method = obj.getClass().getMethod("findLove",null);
+            Method method = obj.getClass().getMethod("findLove", null);
             method.invoke(obj);
 
             //obj.findLove();
@@ -26,10 +22,9 @@ public class JDKProxyTest {
 //            os.write(bytes);
 //            os.close();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
 
 
     }
