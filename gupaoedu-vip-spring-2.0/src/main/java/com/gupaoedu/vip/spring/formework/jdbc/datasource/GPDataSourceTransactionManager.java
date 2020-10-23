@@ -5,12 +5,14 @@ import javax.sql.DataSource;
 /**
  * Created by Tom on 2019/4/17.
  */
-public class GPDataSourceTransactionManager {
+public class GPDataSourceTransactionManager
+{
 
-    private DataSource dataSource;
+	private DataSource dataSource;
 
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+	public void setDataSource(DataSource dataSource)
+	{
+		this.dataSource = dataSource;
+	}
 
 }

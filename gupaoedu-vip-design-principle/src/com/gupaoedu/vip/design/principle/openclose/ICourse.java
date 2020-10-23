@@ -3,10 +3,11 @@ package com.gupaoedu.vip.design.principle.openclose;
 /**
  * Created by Tom
  */
-public interface ICourse {
-    Integer getId();
+public interface ICourse
+{
+	Integer getId();
 
-    String getName();
+	String getName();
 
-    Double getPrice();
+	Double getPrice();
 }

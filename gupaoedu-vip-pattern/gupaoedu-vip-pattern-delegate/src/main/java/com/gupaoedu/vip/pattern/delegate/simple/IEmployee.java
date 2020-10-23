@@ -3,8 +3,9 @@ package com.gupaoedu.vip.pattern.delegate.simple;
 /**
  * Created by Tom.
  */
-public interface IEmployee {
+public interface IEmployee
+{
 
-    public void doing(String command);
+	public void doing(String command);
 
 }

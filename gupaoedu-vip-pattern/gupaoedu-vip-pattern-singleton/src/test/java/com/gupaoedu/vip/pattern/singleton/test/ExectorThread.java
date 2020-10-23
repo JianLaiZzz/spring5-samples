@@ -5,13 +5,15 @@ import com.gupaoedu.vip.pattern.singleton.lazy.LazyDoubleCheckSingleton;
 /**
  * Created by Tom.
  */
-public class ExectorThread implements Runnable {
+public class ExectorThread implements Runnable
+{
 
-    public void run() {
+	public void run()
+	{
 
-        LazyDoubleCheckSingleton singleton = LazyDoubleCheckSingleton.getInstance();
-//        LazySimpleSingleton singleton = LazySimpleSingleton.getInstance();
-//        ThreadLocalSingleton singleton = ThreadLocalSingleton.getInstance();
-        System.out.println(Thread.currentThread().getName() + ":" + singleton);
-    }
+		LazyDoubleCheckSingleton singleton = LazyDoubleCheckSingleton.getInstance();
+		//        LazySimpleSingleton singleton = LazySimpleSingleton.getInstance();
+		//        ThreadLocalSingleton singleton = ThreadLocalSingleton.getInstance();
+		System.out.println(Thread.currentThread().getName() + ":" + singleton);
+	}
 }

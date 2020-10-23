@@ -5,19 +5,24 @@ package com.gupaoedu.vip.pattern.singleton.register;
  */
 //常量中去使用，常量不就是用来大家都能够共用吗？
 //通常在通用API中使用
-public enum EnumSingleton {
-    INSTANCE;
-    private Object data;
+public enum EnumSingleton
+{
+	INSTANCE;
 
-    public Object getData() {
-        return data;
-    }
+	private Object data;
 
-    public void setData(Object data) {
-        this.data = data;
-    }
+	public static EnumSingleton getInstance()
+	{
+		return INSTANCE;
+	}
 
-    public static EnumSingleton getInstance() {
-        return INSTANCE;
-    }
+	public Object getData()
+	{
+		return data;
+	}
+
+	public void setData(Object data)
+	{
+		this.data = data;
+	}
 }

@@ -7,9 +7,10 @@ import com.gupaoedu.vip.pattern.adapter.loginadapter.ResultMsg;
  * 模板模式一定是抽象类，而这里仅仅只是一个接口
  * Created by Tom on 2019/3/16.
  */
-public interface LoginAdapter {
-    boolean support(Object adapter);
+public interface LoginAdapter
+{
+	boolean support(Object adapter);
 
-    ResultMsg login(String id, Object adapter);
+	ResultMsg login(String id, Object adapter);
 
 }

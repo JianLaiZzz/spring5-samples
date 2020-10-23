@@ -5,7 +5,8 @@ import java.util.Map;
 /**
  * Created by Tom
  */
-public abstract class Base {
-    public abstract Map method();
+public abstract class Base
+{
+	public abstract Map method();
 
 }

@@ -3,8 +3,9 @@ package com.gupaoedu.vip.design.principle.interfacegregation.gregation;
 /**
  * Created by Tom
  */
-public interface IFlyAnimal {
+public interface IFlyAnimal
+{
 
-    void fly();
+	void fly();
 
 }

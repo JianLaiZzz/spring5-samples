@@ -14,16 +14,19 @@ package com.gupaoedu.vip.pattern.singleton.hungry;
 //浪费了内存，有可能占着茅坑不拉屎
 
 //绝对线程安全，在线程还没出现以前就是实例化了，不可能存在访问安全问题
-public class HungrySingleton {
-    //先静态、后动态
-    //先属性、后方法
-    //先上后下
-    private static final HungrySingleton hungrySingleton = new HungrySingleton();
+public class HungrySingleton
+{
+	//先静态、后动态
+	//先属性、后方法
+	//先上后下
+	private static final HungrySingleton hungrySingleton = new HungrySingleton();
 
-    private HungrySingleton() {
-    }
+	private HungrySingleton()
+	{
+	}
 
-    public static HungrySingleton getInstance() {
-        return hungrySingleton;
-    }
+	public static HungrySingleton getInstance()
+	{
+		return hungrySingleton;
+	}
 }

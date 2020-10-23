@@ -6,10 +6,11 @@ package com.gupaoedu.vip.pattern.factory.abstractfactory;
  * 易于扩展
  * Created by Tom.
  */
-public interface CourseFactory {
+public interface CourseFactory
+{
 
-    INote createNote();
+	INote createNote();
 
-    IVideo createVideo();
+	IVideo createVideo();
 
 }

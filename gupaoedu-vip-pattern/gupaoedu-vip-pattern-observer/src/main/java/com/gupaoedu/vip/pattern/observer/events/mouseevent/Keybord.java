@@ -5,14 +5,17 @@ import com.gupaoedu.vip.pattern.observer.events.core.EventLisenter;
 /**
  * Created by Tom.
  */
-public class Keybord extends EventLisenter {
+public class Keybord extends EventLisenter
+{
 
-    public void down() {
+	public void down()
+	{
 
-    }
+	}
 
-    public void up() {
+	public void up()
+	{
 
-    }
+	}
 
 }

@@ -6,20 +6,25 @@ import com.gupaoedu.vip.pattern.proxy.dynamicproxy.jdkproxy.Girl;
 /**
  * Created by Tom on 2019/3/10.
  */
-public class GPProxyTest {
+public class GPProxyTest
+{
 
-    public static void main(String[] args) {
-        try {
+	public static void main(String[] args)
+	{
+		try
+		{
 
-            //JDK动态代理的实现原理
-            Person obj = (Person) new GPMeipo().getInstance(new Girl());
-            System.out.println(obj.getClass());
-            obj.findLove();
+			//JDK动态代理的实现原理
+			Person obj = (Person) new GPMeipo().getInstance(new Girl());
+			System.out.println(obj.getClass());
+			obj.findLove();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 
-    }
+	}
 
 }

@@ -5,10 +5,11 @@ package com.gupaoedu.vip.spring.demo.service;
  *
  * @author Tom
  */
-public interface IQueryService {
+public interface IQueryService
+{
 
-    /**
-     * 查询
-     */
-    public String query(String name);
+	/**
+	 * 查询
+	 */
+	public String query(String name);
 }

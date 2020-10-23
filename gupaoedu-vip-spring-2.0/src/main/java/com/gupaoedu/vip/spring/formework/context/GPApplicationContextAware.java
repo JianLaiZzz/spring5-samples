@@ -6,6 +6,7 @@ package com.gupaoedu.vip.spring.formework.context;
  * 将自动调用setApplicationContext()方法，从而将IOC容器注入到目标类中
  * Created by Tom.
  */
-public interface GPApplicationContextAware {
-    void setApplicationContext(GPApplicationContext applicationContext);
+public interface GPApplicationContextAware
+{
+	void setApplicationContext(GPApplicationContext applicationContext);
 }

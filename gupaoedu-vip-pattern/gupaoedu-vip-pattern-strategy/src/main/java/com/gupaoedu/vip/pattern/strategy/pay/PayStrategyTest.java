@@ -1,14 +1,16 @@
 package com.gupaoedu.vip.pattern.strategy.pay;
 
-import com.gupaoedu.vip.pattern.strategy.pay.payport.PayStrategy;
 import org.springframework.beans.factory.support.InstantiationStrategy;
+
+import com.gupaoedu.vip.pattern.strategy.pay.payport.PayStrategy;
 
 /**
  * Created by Tom.
  */
-public class PayStrategyTest {
+public class PayStrategyTest
+{
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
         //省略把商品添加到购物车，再从购物车下单
         //直接从点单开始

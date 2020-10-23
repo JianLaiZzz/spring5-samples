@@ -5,15 +5,16 @@ import java.lang.reflect.Method;
 /**
  * Created by Tom on 2019/4/15.
  */
-public interface GPJoinPoint {
+public interface GPJoinPoint
+{
 
-    Object getThis();
+	Object getThis();
 
-    Object[] getArguments();
+	Object[] getArguments();
 
-    Method getMethod();
+	Method getMethod();
 
-    void setUserAttribute(String key, Object value);
+	void setUserAttribute(String key, Object value);
 
-    Object getUserAttribute(String key);
+	Object getUserAttribute(String key);
 }

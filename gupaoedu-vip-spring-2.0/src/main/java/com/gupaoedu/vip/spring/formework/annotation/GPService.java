@@ -7,9 +7,10 @@ import java.lang.annotation.*;
  *
  * @author Tom
  */
-@Target({ElementType.TYPE})
+@Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface GPService {
-    String value() default "";
+public @interface GPService
+{
+	String value() default "";
 }

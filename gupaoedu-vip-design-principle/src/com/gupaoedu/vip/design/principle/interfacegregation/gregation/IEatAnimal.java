@@ -3,8 +3,9 @@ package com.gupaoedu.vip.design.principle.interfacegregation.gregation;
 /**
  * Created by Tom
  */
-public interface IEatAnimal {
+public interface IEatAnimal
+{
 
-    void eat();
+	void eat();
 
 }

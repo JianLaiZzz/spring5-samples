@@ -3,22 +3,24 @@ package com.gupaoedu.vip.pattern.observer.askadvice;
 /**
  * Created by Tom
  */
-public class ObserverTest {
-    public static void main(String[] args) {
+public class ObserverTest
+{
+	public static void main(String[] args)
+	{
 
-        Community course = new Community("GPer生态圈");
-        Teacher tom = new Teacher("Tom");
-        Teacher mic = new Teacher("Mic");
+		Community course = new Community("GPer生态圈");
+		Teacher tom = new Teacher("Tom");
+		Teacher mic = new Teacher("Mic");
 
-        course.addObserver(tom);
-        course.addObserver(mic);
+		course.addObserver(tom);
+		course.addObserver(mic);
 
-        //业务逻辑代码
-        Question question = new Question();
-        question.setUserName("小明");
-        question.setContent("观察者模式适用于哪些场景？");
+		//业务逻辑代码
+		Question question = new Question();
+		question.setUserName("小明");
+		question.setContent("观察者模式适用于哪些场景？");
 
-        course.publishQuestion(course, question);
+		course.publishQuestion(course, question);
 
-    }
+	}
 }

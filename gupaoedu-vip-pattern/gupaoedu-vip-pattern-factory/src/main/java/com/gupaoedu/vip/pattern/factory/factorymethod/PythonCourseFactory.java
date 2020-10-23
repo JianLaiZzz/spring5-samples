@@ -6,9 +6,11 @@ import com.gupaoedu.vip.pattern.factory.PythonCourse;
 /**
  * Created by Tom.
  */
-public class PythonCourseFactory implements ICourseFactory {
+public class PythonCourseFactory implements ICourseFactory
+{
 
-    public ICourse create() {
-        return new PythonCourse();
-    }
+	public ICourse create()
+	{
+		return new PythonCourse();
+	}
 }
