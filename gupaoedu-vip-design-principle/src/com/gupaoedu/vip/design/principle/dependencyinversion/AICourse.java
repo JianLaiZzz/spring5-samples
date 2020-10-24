@@ -9,6 +9,7 @@ public class AICourse implements ICourse
 	public void study()
 	{
 		System.out.println("Tom在学习AI课程");
+
 	}
 
 }

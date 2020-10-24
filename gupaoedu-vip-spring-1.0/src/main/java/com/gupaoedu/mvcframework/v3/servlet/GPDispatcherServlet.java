@@ -47,6 +47,7 @@ public class GPDispatcherServlet extends HttpServlet
 	/**
 	 * 初始化，加载配置文件
 	 */
+	@Override
 	public void init(ServletConfig config) throws ServletException
 	{
 
@@ -71,6 +72,7 @@ public class GPDispatcherServlet extends HttpServlet
 		System.out.println("gupaoedu mvcframework is init");
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException
 	{
@@ -80,6 +82,7 @@ public class GPDispatcherServlet extends HttpServlet
 	/**
 	 * 执行业务处理
 	 */
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException
 	{

@@ -20,6 +20,7 @@ public class Rectangle implements Quadrangle
 		this.width = width;
 	}
 
+	@Override
 	public long getHeight()
 	{
 		return height;

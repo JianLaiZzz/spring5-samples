@@ -16,12 +16,12 @@ public class JavaDiscountCourse extends JavaCourse
 		return super.getPrice() * 0.61;
 	}
 
-	//    public Double getOriginPrice(){
-	//        return super.getPrice();
-	//    }
-	//
-	//    public Double getPrice(){
-	//        return super.getPrice() * 0.61;
-	//    }
+//	    public Double getOriginPrice(){
+//	        return super.getPrice();
+//	    }
+//
+//	    public Double getPrice(){
+//	        return super.getPrice() * 0.61;
+//	    }
 
 }
