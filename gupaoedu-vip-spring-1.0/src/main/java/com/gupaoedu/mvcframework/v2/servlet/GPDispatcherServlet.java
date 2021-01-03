@@ -20,6 +20,7 @@ import com.gupaoedu.mvcframework.annotation.*;
 public class GPDispatcherServlet extends HttpServlet
 {
 
+
 	//存储aplication.properties的配置内容
 	private Properties contextConfig = new Properties();
 	//存储所有扫描到的类
@@ -42,6 +43,7 @@ public class GPDispatcherServlet extends HttpServlet
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException
 	{
+
 		//派遣，分发任务
 		try
 		{

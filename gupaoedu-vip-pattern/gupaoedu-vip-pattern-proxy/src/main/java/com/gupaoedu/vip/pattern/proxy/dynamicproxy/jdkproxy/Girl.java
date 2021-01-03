@@ -7,6 +7,7 @@ import com.gupaoedu.vip.pattern.proxy.Person;
  */
 public class Girl implements Person
 {
+	@Override
 	public void findLove()
 	{
 		System.out.println("高富帅");

@@ -1,10 +1,10 @@
 package com.gupaoedu.vip.pattern.proxy.dynamicproxy.cglibproxy;
 
-import java.lang.reflect.Method;
-
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
+
+import java.lang.reflect.Method;
 
 /**
  * Created by Tom on 2019/3/11.
