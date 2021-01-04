@@ -8,7 +8,7 @@
 
     <servlet>
         <servlet-name>zhwMvc</servlet-name>
-        <servlet-class>com.zhw.mvcframework.v1.servlet.GPDispatcherServlet</servlet-class>
+        <servlet-class>com.zhw.mvcframework.v1.servlet.ZhwDispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>application.properties</param-value>
