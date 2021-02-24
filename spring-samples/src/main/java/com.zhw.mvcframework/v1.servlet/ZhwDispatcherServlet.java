@@ -1,5 +1,7 @@
 package com.zhw.mvcframework.v1.servlet;
 
+import com.zhw.mvcframework.annotation.ZhwController;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
  **/
 public class ZhwDispatcherServlet extends HttpServlet {
 
-    private Map<String, Object> mapping = new ConcurrentHashMap<>();
+    private Map<String, Object> mappings = new ConcurrentHashMap<>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -45,14 +47,14 @@ public class ZhwDispatcherServlet extends HttpServlet {
 
         String contextPath = req.getContextPath();
         requestURI = requestURI.replace(contextPath, "").replaceAll("/+", "/");
-        if (!mapping.containsKey(requestURI)) {
+        if (!mappings.containsKey(requestURI)) {
             resp.getWriter().write("404 Not Found!!");
             return;
         }
 
-        Method method = (Method) mapping.get(requestURI);
+        Method method = (Method) mappings.get(requestURI);
         Map<String, String[]> params = req.getParameterMap();
-        method.invoke(mapping.get(method.getDeclaringClass().getName()),
+        method.invoke(mappings.get(method.getDeclaringClass().getName()),
                 new Object[]{req, resp, params.get("name")});
 
     }
@@ -71,7 +73,25 @@ public class ZhwDispatcherServlet extends HttpServlet {
             doScanner(scanPackage);
 
 
-        } catch (IOException e) {
+            for (String className : mappings.keySet()) {
+
+                if (!className.contains(".")) {
+                    continue;
+                }
+
+                Class<?> clazz = Class.forName(className);
+
+                if (clazz.isAnnotationPresent(ZhwController.class)) {
+
+                    mappings.put(className, clazz.newInstance());
+
+                }
+
+
+            }
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -80,9 +100,7 @@ public class ZhwDispatcherServlet extends HttpServlet {
     private void doScanner(String scanPackage) {
 
         URL url = this.getClass().getClassLoader().getResource("/" + scanPackage.replaceAll("\\.", "/"));
-
         File classDir = new File(url.getFile());
-
         for (File file : classDir.listFiles()) {
             if (file.isDirectory()) {
 
@@ -92,7 +110,7 @@ public class ZhwDispatcherServlet extends HttpServlet {
                     continue;
                 }
                 String clazzName = (scanPackage + "." + file.getName().replace(".class", ""));
-                mapping.put(clazzName, null);
+                mappings.put(clazzName, null);
             }
 
         }

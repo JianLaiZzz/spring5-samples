@@ -21,6 +21,7 @@ public class OrderServiceStaticProxy implements IOrderService
 		this.orderService = orderService;
 	}
 
+	@Override
 	public int createOrder(Order order)
 	{
 		Long time = order.getCreateTime();

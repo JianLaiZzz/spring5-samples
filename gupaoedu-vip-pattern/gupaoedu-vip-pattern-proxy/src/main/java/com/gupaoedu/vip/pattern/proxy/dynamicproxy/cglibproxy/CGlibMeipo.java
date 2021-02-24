@@ -21,6 +21,7 @@ public class CGlibMeipo implements MethodInterceptor
 		return enhancer.create();
 	}
 
+	@Override
 	public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy)
 			throws Throwable
 	{

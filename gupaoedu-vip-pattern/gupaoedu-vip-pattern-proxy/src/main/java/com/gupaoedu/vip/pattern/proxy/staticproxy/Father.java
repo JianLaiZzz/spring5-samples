@@ -14,6 +14,7 @@ public class Father implements Person
 		this.person = person;
 	}
 
+	@Override
 	public void findLove()
 	{
 		System.out.println("父亲物色对象");

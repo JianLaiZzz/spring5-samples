@@ -25,7 +25,7 @@ public class OrderServiceDynamicProxy implements GPInvocationHandler
 		return GPProxy.newProxyInstance(new GPClassLoader(), clazz.getInterfaces(), this);
 	}
 
-	@Override
+
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable
 	{
 		before(args[0]);

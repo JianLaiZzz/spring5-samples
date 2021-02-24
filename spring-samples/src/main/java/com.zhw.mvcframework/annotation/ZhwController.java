@@ -5,7 +5,6 @@ import java.lang.annotation.*;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface ZhwController
-{
-	String value() default "";
+public @interface ZhwController {
+    String value() default "";
 }
