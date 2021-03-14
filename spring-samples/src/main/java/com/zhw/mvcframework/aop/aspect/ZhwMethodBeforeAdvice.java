@@ -26,12 +26,12 @@ public class ZhwMethodBeforeAdvice extends ZhwAbstractAspectJAdvice
 	}
 
 	@Override
-	public Object invoke(ZhwMethodInvocation invocationHandler) throws Exception
+	public Object invoke(ZhwMethodInvocation invocationHandler) throws Throwable
 	{
 		this.point = invocationHandler;
 
 		this.before(invocationHandler.getMethod(), invocationHandler.getMethodArg(),
 				invocationHandler.getThis());
-		return null;
+		return invocationHandler.process();
 	}
 }

@@ -6,5 +6,5 @@ package com.zhw.mvcframework.aop.interceptor;
 public interface ZhwMethodInterceptor
 {
 
-	Object invoke(ZhwMethodInvocation invocationHandler) throws Exception;
+	Object invoke(ZhwMethodInvocation invocationHandler) throws Throwable;
 }
