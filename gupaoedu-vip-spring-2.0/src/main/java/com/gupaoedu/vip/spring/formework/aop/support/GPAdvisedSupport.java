@@ -1,5 +1,10 @@
 package com.gupaoedu.vip.spring.formework.aop.support;
 
+import com.gupaoedu.vip.spring.formework.aop.aspect.GPAfterReturningAdviceInterceptor;
+import com.gupaoedu.vip.spring.formework.aop.aspect.GPAfterThrowingAdviceInterceptor;
+import com.gupaoedu.vip.spring.formework.aop.aspect.GPMethodBeforeAdviceInterceptor;
+import com.gupaoedu.vip.spring.formework.aop.config.GPAopConfig;
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -8,13 +13,16 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.gupaoedu.vip.spring.formework.aop.aspect.GPAfterReturningAdviceInterceptor;
-import com.gupaoedu.vip.spring.formework.aop.aspect.GPAfterThrowingAdviceInterceptor;
-import com.gupaoedu.vip.spring.formework.aop.aspect.GPMethodBeforeAdviceInterceptor;
-import com.gupaoedu.vip.spring.formework.aop.config.GPAopConfig;
-
 /**
  * Created by Tom on 2019/4/14.
+ */
+
+/**
+ * AdvisedSupport主要完成对AOP配置的解析,其中
+ * pointCutMatch（）方法用来判断目标类是否符合切面规则，从而决定是
+ * 否需要生成代理类，对目标方法进行增强。而
+ * getInterceptorsAndDynamic-InterceptionAdvice（）方法主要根据 AOP 配
+ * 置，将需要回调的方法封装成一个拦截器链并返回提供给外部获取
  */
 public class GPAdvisedSupport
 {
@@ -48,6 +56,7 @@ public class GPAdvisedSupport
 	public Object getTarget()
 	{
 		return this.target;
+
 	}
 
 	public void setTarget(Object target)
@@ -106,7 +115,7 @@ public class GPAdvisedSupport
 				Matcher matcher = pattern.matcher(methodString);
 				if (matcher.matches())
 				{
-					//执行器链
+					//执行器链,能满足切面规则的类
 					List<Object> advices = new LinkedList<Object>();
 					//把每一个方法包装成 MethodIterceptor
 					//before
@@ -146,6 +155,12 @@ public class GPAdvisedSupport
 
 	}
 
+	/**
+	 * 方法用来判断目标类是否符合切面规则，从而决定是
+	 * 否需要生成代理类，对目标方法进行增强
+	 * 
+	 * @return
+	 */
 	public boolean pointCutMatch()
 	{
 		return pointCutClassPattern.matcher(this.targetClass.toString()).matches();
