@@ -38,6 +38,9 @@ public class GPJdkDynamicAopProxy implements GPAopProxy, InvocationHandler
 	{
 		List<Object> interceptorsAndDynamicMethodMatchers = this.advised
 				.getInterceptorsAndDynamicInterceptionAdvice(method, this.advised.getTargetClass());
+
+
+
 		GPMethodInvocation invocation = new GPMethodInvocation(proxy, this.advised.getTarget(), method,
 				args, this.advised.getTargetClass(), interceptorsAndDynamicMethodMatchers);
 		return invocation.proceed();
