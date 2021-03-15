@@ -1,11 +1,11 @@
 package com.gupaoedu.vip.spring.formework.aop.intercept;
 
+import com.gupaoedu.vip.spring.formework.aop.aspect.GPJoinPoint;
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.gupaoedu.vip.spring.formework.aop.aspect.GPJoinPoint;
 
 /**
  * Created by Tom on 2019/4/14.
@@ -78,6 +78,7 @@ public class GPMethodInvocation implements GPJoinPoint
 		return this.method;
 	}
 
+	@Override
 	public void setUserAttribute(String key, Object value)
 	{
 		if (value != null)
@@ -97,6 +98,7 @@ public class GPMethodInvocation implements GPJoinPoint
 		}
 	}
 
+	@Override
 	public Object getUserAttribute(String key)
 	{
 		return (this.userAttributes != null ? this.userAttributes.get(key) : null);
