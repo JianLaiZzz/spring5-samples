@@ -7,7 +7,11 @@ import java.lang.reflect.Method;
  */
 public abstract class GPAbstractAspectAdvice implements GPAdvice
 {
+
+	//切面方法
 	private Method aspectMethod;
+
+	//切面类
 	private Object aspectTarget;
 
 	public GPAbstractAspectAdvice(Method aspectMethod, Object aspectTarget)

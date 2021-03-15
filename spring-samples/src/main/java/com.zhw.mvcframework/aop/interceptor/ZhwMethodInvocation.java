@@ -3,6 +3,7 @@ package com.zhw.mvcframework.aop.interceptor;
 import com.zhw.mvcframework.aop.aspect.ZhwJoinPoint;
 
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,17 +18,23 @@ import java.util.Map;
 public class ZhwMethodInvocation implements ZhwJoinPoint
 {
 
+	//代理对象
 	private Object proxyObject;
 
+	//目标对象方法
 	private Method method;
 
+	//目标对象
 	private Object target;
 
+	//目标类
 	private Class<?> clazz;
 
+	//方法参数
 	private Object[] args;
 
-	private List<Object> interceptorsAndDynamicMethodMatchers;
+	//拦截器链条
+	private final List<Object> interceptorsAndDynamicMethodMatchers;
 
 	private Map<String, Object> attributes;
 
@@ -46,6 +53,7 @@ public class ZhwMethodInvocation implements ZhwJoinPoint
 
 	public Object process() throws Throwable
 	{
+		//如果Interceptor执行完了，则执行joinPoint
 		if (this.currentInterceptorIndex == interceptorsAndDynamicMethodMatchers.size() - 1)
 		{
 			return this.method.invoke(target, args);
@@ -54,6 +62,7 @@ public class ZhwMethodInvocation implements ZhwJoinPoint
 		Object interceptorOrInterceptionAdvice = this.interceptorsAndDynamicMethodMatchers
 				.get(++this.currentInterceptorIndex);
 
+		//如果要动态匹配joinPoint
 		if (interceptorOrInterceptionAdvice instanceof ZhwMethodInterceptor)
 		{
 			ZhwMethodInterceptor interceptor = (ZhwMethodInterceptor) interceptorOrInterceptionAdvice;
@@ -90,12 +99,27 @@ public class ZhwMethodInvocation implements ZhwJoinPoint
 	@Override
 	public void setAttribute(String key, Object value)
 	{
-
+		if (value != null)
+		{
+			if (this.attributes == null)
+			{
+				this.attributes = new HashMap<String, Object>();
+			}
+			this.attributes.put(key, value);
+		}
+		else
+		{
+			if (this.attributes != null)
+			{
+				this.attributes.remove(key);
+			}
+		}
 	}
 
 	@Override
 	public Object getAttribute(String key)
 	{
-		return null;
+		return (this.attributes != null ? this.attributes.get(key) : null);
+
 	}
 }

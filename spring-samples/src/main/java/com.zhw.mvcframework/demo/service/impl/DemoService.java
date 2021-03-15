@@ -1,4 +1,4 @@
-package com.zhw.demo.service.impl;
+package com.zhw.mvcframework.demo.service.impl;
 
 import com.zhw.mvcframework.annotation.ZhwService;
 

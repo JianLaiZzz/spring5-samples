@@ -1,14 +1,15 @@
-package com.zhw.demo.action;
+package com.zhw.mvcframework.demo.action;
 
-import com.zhw.demo.service.impl.IDemoService;
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.zhw.mvcframework.annotation.ZhwAutowired;
 import com.zhw.mvcframework.annotation.ZhwController;
 import com.zhw.mvcframework.annotation.ZhwRequestMapping;
 import com.zhw.mvcframework.annotation.ZhwRequestParam;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import com.zhw.mvcframework.demo.service.impl.IDemoService;
 
 /**
  * @author zhangwei

@@ -27,14 +27,21 @@ import java.util.regex.Pattern;
 public class GPAdvisedSupport
 {
 
+	//目标类
 	private Class<?> targetClass;
 
+	//目标对象
 	private Object target;
 
+	//aop配置
 	private GPAopConfig config;
 
+	//匹配切面类正则表达式
 	private Pattern pointCutClassPattern;
 
+	/**
+	 * key 方法，value 方法的拦截器链
+	 */
 	private transient Map<Method, List<Object>> methodCache;
 
 	public GPAdvisedSupport(GPAopConfig config)
@@ -83,6 +90,7 @@ public class GPAdvisedSupport
 
 	private void parse()
 	{
+		//切面表达式
 		String pointCut = config.getPointCut().replaceAll("\\.", "\\\\.").replaceAll("\\\\.\\*", ".*")
 				.replaceAll("\\(", "\\\\(").replaceAll("\\)", "\\\\)");
 		//pointCut=public .* com.gupaoedu.vip.spring.demo.service..*Service..*(.*)
@@ -95,6 +103,7 @@ public class GPAdvisedSupport
 		{
 
 			methodCache = new HashMap<Method, List<Object>>();
+
 			Pattern pattern = Pattern.compile(pointCut);
 
 			Class aspectClass = Class.forName(this.config.getAspectClass());
