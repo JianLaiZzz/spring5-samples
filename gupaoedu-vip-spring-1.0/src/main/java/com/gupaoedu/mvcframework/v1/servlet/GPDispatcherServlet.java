@@ -75,6 +75,7 @@ public class GPDispatcherServlet extends HttpServlet
 			configContext.load(is);
 			String scanPackage = configContext.getProperty("scanPackage");
 			doScanner(scanPackage);
+
 			for (String className : mapping.keySet())
 			{
 				if (!className.contains("."))
@@ -124,6 +125,7 @@ public class GPDispatcherServlet extends HttpServlet
 					continue;
 				}
 			}
+
 			for (Object object : mapping.values())
 			{
 				if (object == null)

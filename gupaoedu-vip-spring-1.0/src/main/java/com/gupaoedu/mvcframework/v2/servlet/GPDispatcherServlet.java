@@ -20,7 +20,6 @@ import com.gupaoedu.mvcframework.annotation.*;
 public class GPDispatcherServlet extends HttpServlet
 {
 
-
 	//存储aplication.properties的配置内容
 	private Properties contextConfig = new Properties();
 	//存储所有扫描到的类

@@ -130,6 +130,7 @@ public class DispatcherServlet extends HttpServlet
 
 		public Method getMethod()
 		{
+
 			return method;
 		}
 

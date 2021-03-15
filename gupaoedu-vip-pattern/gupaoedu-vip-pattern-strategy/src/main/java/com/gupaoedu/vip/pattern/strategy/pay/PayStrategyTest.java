@@ -23,7 +23,7 @@ public class PayStrategyTest
         //这个值是在支付的时候才决定用哪个值
         System.out.println(order.pay(PayStrategy.ALI_PAY));
 
-        InstantiationStrategy
+
 
     }
 

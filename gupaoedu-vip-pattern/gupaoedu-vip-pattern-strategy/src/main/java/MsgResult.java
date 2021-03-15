@@ -1,13 +1,11 @@
-package com.gupaoedu.vip.pattern.strategy.pay;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.*;
 import java.util.Enumeration;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 支付完成以后的状态
@@ -26,14 +24,15 @@ public class MsgResult
 		this.msg = msg;
 	}
 
-	public static void main(String[] args) throws SocketException, JsonProcessingException
-	{
+	public static void main(String[] args) throws SocketException, InterruptedException {
 		InetAddress inet = getFirstNonLoopbackAddress(true, false);
 
 		System.out.println(getLinuxLocalIp());
 		//		System.out.println("local realIP: " + getIp());
 		//
 		//		System.out.println(getNetIp());
+
+		System.out.println("yuncheng:  "+getV4IP());
 	}
 
 	public static String getIp()
@@ -158,12 +157,61 @@ public class MsgResult
 		return buffer.toString();
 	}
 
-	public static String getNetIp() throws JsonProcessingException
-	{
-		ObjectMapper mapper = new ObjectMapper();
-		IpMessage ipMessage = mapper.readValue(getRemoteIp(), IpMessage.class);
 
-		return ipMessage.getIp();
+	public static String getV4IP() throws InterruptedException {
+		String ip = "";
+		String chinaz = "http://ip.chinaz.com";
+
+		StringBuilder inputLine = new StringBuilder();
+		String read = "";
+		URL url = null;
+		HttpURLConnection urlConnection = null;
+		BufferedReader in = null;
+		try
+		{
+			url = new URL(chinaz);
+			urlConnection = (HttpURLConnection) url.openConnection();
+			in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
+			while ((read = in.readLine()) != null)
+			{
+				inputLine.append(read + "\r\n");
+			}
+			//System.out.println(inputLine.toString());
+		}
+		catch (MalformedURLException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			if (in != null)
+			{
+				try
+				{
+					in.close();
+				}
+				catch (IOException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
+		Thread.sleep(1000L);
+		Pattern p = Pattern.compile("\\<dd class\\=\"fz24\">(.*?)\\<\\/dd>");
+		Matcher m = p.matcher(inputLine.toString());
+		if (m.find())
+		{
+			String ipstr = m.group(1);
+			ip = ipstr;
+			//System.out.println(ipstr);
+		}
+		return ip;
 	}
 
 }
